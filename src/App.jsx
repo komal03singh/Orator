@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import HomePage from "./Components/Homepage";
 import FileDisplay from "./Components/FileDisplay";
 import Transcribing from "./Components/Transcribing";
+import Information from "./Components/Information";
 export default function App() {
   const [file,setFile] = useState(null)
   const [audioStream,setAudioStream] = useState(null)
