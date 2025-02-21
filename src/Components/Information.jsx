@@ -39,12 +39,37 @@ function Information(props) {
     }
 
     worker.current.addEventListener('message',onMessageRecieved)
-    return ()=>{worker.current.removeEventListener('message',onMessageRecieved)
-  
+    return ()=>worker.current.removeEventListener('message',onMessageRecieved)
+  })
+
+  const textElememnt = tab === 'transcription' ? output.map(val=>val.text) : translation || ''
+
+  function handleCopy(){
+    navigator.clipboard.writeText(textElememnt)
+  }
+
+  function handleDownload(){
+    const element = document.createElement('a')
+    const file = new Blob([textElememnt],{type:'text/plain'})
+    element.href = URL.createObjectURL(file)
+    element.download = tab === `Orator_${newDate().toString()}.txt`
+    element.click()
+  }
+
+  function generateTranslation(){
+    if (translating || toLanguage === 'Select language') {
+      return
     }
 
+    setTranslating(true)
 
-  },[])
+    worker.current.postMessage({
+      text:output.map(val=>val.text),
+      src_lang: 'eng_Latn',
+      tgt_lang: toLanguage
+    })
+  }
+
   return (
     <main className='flex-1 p-4 flex flex-col justify-center sm:w-96 text-center sm:gap-4 pb-20 w-72 max-w-full mx-auto '>
         <h1 className='font-semibold text-4xl sm:text-4xl md:text-5xl text-purple-300'>Your Transcription</h1>
