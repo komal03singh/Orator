@@ -1,8 +1,50 @@
-import React from 'react'
-import { div } from 'three/tsl'
+import React, { useEffect, useRef, useState } from 'react'
+import Transcription from './Transcription'
+import Translation from './Translation'
 
-function Information() {
+function Information(props) {
+  const {output,finished}=props
   const [tab,setTab] = useState('transcription')
+  const [translation,setTranslation] = useState(null)
+  const [toLanguage,setToLanguage] = useState('Select language')
+  const [translating,setTranslating] = useState(null)
+  console.log(output)
+
+  const worker = useRef()
+
+  useEffect(()=>{
+    if(!worker.current){
+      worker.current = new Worker(new URL('../utils/translate.worker.js',import.meta.url),{
+        type:'module'
+      })
+    }
+
+    const onMessageRecieved=async(e)=>{
+      switch(e.data.status){
+        case 'initiate':
+          console.log('DOWNLOADING')
+          break;
+        case 'progress':
+          console.log('LOADING')
+          break;
+        case 'update':
+          setTranslation(e.data.output)
+          console.log(e.data.output)
+          break;
+        case 'complete':
+          setTranslating(false)
+          console.log("DONE")
+          break;
+      }
+    }
+
+    worker.current.addEventListener('message',onMessageRecieved)
+    return ()=>{worker.current.removeEventListener('message',onMessageRecieved)
+  
+    }
+
+
+  },[])
   return (
     <main className='flex-1 p-4 flex flex-col justify-center sm:w-96 text-center sm:gap-4 pb-20 w-72 max-w-full mx-auto '>
         <h1 className='font-semibold text-4xl sm:text-4xl md:text-5xl text-purple-300'>Your Transcription</h1>
@@ -21,6 +63,14 @@ function Information() {
           ) :(
             <Translation {...props} toLanguage={toLanguage} translating={translating} textElement={textElement} setTranslation={setTranslation} setToLanguage={setToLanguage} generateTranslation={generateTranslation}/>
           )}
+        </div>
+        <div className='flex items-center gap-4 mx-auto'>
+          <button onClick={handleCopy} title="Copy" className='bg-white hover:text-blue-500 duration-200 text-blue-300 px-2 aspect-square grid place-items-center rounded'>
+            <i className="fa-solid fa-copy"></i>
+          </button>
+          <button onClick={handleDownload} title="Download" className='bg-white hover:text-blue-500 duration-200 text-blue-500 px-2 aspect-square grid place-center rounded'>
+            <i className='fa-solid fa-copy'></i>
+          </button>
         </div>
     </main>
   )
