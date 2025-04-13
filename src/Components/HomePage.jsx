@@ -86,7 +86,7 @@ function HomePage(props) {
           <input onChange={(e)=>{
             const tempFile=e.target.files[0]
             setFile(tempFile)}} className='hidden' type='file' accept='.mp3,.wave' /></label> a mp3 file</p>
-        <p className='italic text-blue-200'>Free now free forever</p>
+        <p className='italic text-blue-200'>Fast. Accurate. Effortless.</p>
       </div>
       <div>
         <img className='rounded-4xl h-xl w-xl m-4' src={VoiceGif} alt="voice" />

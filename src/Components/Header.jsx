@@ -8,10 +8,10 @@ function Header() {
             </a>
             
             <div className='gap-4 flex items-center '>
-                <button href="/" className='flex items-center gap-2 text-sm splBtn px-3 py-2 rounded-xl text-purple-300'>
+                <a href="/" className='flex items-center gap-2 text-sm splBtn px-3 py-2 rounded-xl text-purple-300'>
                     <p>New</p>
                     <i className="fa-solid fa-plus"></i>
-                </button>
+                </a>
             </div>
         </header>
   )

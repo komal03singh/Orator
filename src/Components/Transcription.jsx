@@ -1,16 +1,9 @@
 import React from 'react'
 
-
-
-function Transcription(props) {
-
-    const {textElement} = props
+export default function Transcription(props) {
+    const { textElement } = props
 
     return (
-    <div>
-      {textElement}
-    </div>
-  )
+        <div className='mb-2 break-after-all italic text-blue-200'>{textElement}</div>
+    )
 }
-
-export default Transcription

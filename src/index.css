@@ -2,8 +2,9 @@
 
 @theme {
   --color-grad1: #0E1020;
-  
+
 }
+
 
 * {
   font-family: 'Open Sans', sans-serif;
@@ -18,7 +19,7 @@ h3,
 
 .splBtn{
   background: #0E1020;
-  box-shadow: 0px 6px 20px #C79FE3;
+  box-shadow: 0px 6px 20px #6a388f;
   transition-duration: 200ms;
 }
 
