@@ -1,31 +1,54 @@
 # 🎙️ Orator - A Transcription App  
 
-🚀 **Orator** is a powerful web-based transcription app that allows users to convert audio recordings into text with just a single click. It also provides real-time translation features, making it a versatile tool for professionals, students, and content creators.  
+
+**Orator** is a transcription app that enables users to **record or upload audio**, **transcribe** and **translate** it effortlessly using powerful AI models. It combines the capabilities of **OpenAI Whisper** for transcription and **Xenova's NLLB-200 Distilled (600M)** model for multilingual translation—without relying on external APIs.
+
+![Orator Banner](./src/asset/voice2.gif)
 
 ---
 
-## 🌟 Features  
+## 🚀 Features
 
-✅ **One-Click Transcription** – Convert audio files or recordings into text instantly.  
-✅ **Multilingual Support** – Translate transcriptions into multiple languages.  
-✅ **User-Friendly UI** – Built with Tailwind CSS for a sleek and modern design.  
-✅ **Fast & Lightweight** – Optimized with Vite for quick performance.  
-✅ **Secure & Efficient** – No data stored; everything happens in real-time.  
-
----
-
-## 📸 Screenshots  
-
->
- 
+- 🎤 Record live audio via microphone
+- 📁 Upload audio files
+- 🧠 **Transcribe speech using OpenAI Whisper**
+- 🌍 **Translate transcriptions using Xenova’s `nllb-200-distilled-600M`**
+- 📥 Copy or download the final result
+- 💻 Responsive, mobile-friendly UI
 
 ---
 
-## 🛠 Tech Stack  
+## 🧠 Powered by AI
 
-- **Frontend:** React.js, Tailwind CSS  
-- **Bundler:** Vite  
-- **APIs:** Web Speech API (for transcription), Google Translate API (for translations)  
+### 🔊 Transcription – OpenAI Whisper
+- High-quality multilingual speech recognition
+- Robust even in noisy environments
+- Converts spoken audio into accurate text
+
+### 🌍 Translation – Xenova’s `nllb-200-distilled-600M`
+- Lightweight distilled version of Meta AI’s NLLB-200
+- Supports 200+ languages
+- Runs locally in-browser
 
 ---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, TailwindCSS, Vite
+- **Transcription**: OpenAI Whisper
+- **Translation**: Xenova/nllb-200-distilled-600M
+
+---
+
+📦 Dependencies
+
+"react": "^18.x",
+"vite": "^4.x",
+"tailwindcss": "^3.x",
+"font-awesome": "^6.x",
+"@xenova/transformers": "^2.x"
+
+
+
+
 
