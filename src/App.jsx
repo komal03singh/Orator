@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
-import HomePage from './components/HomePage'
-import Header from './components/Header'
-import FileDisplay from './components/FileDisplay'
-import Information from './Components/Information'
-import Transcribing from './components/Transcribing'
-import { MessageTypes } from './utils/presets'
+import HomePage from './Components/HomePage.jsx'
+import Header from './Components/Header.jsx'
+import FileDisplay from './components/FileDisplay.jsx'
+import Information from './Components/Information.jsx'
+import Transcribing from './components/Transcribing.jsx'
+import { MessageTypes } from './utils/presets.js'
 
 function App() {
   const [file, setFile] = useState(null)
