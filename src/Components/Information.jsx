@@ -6,12 +6,13 @@ import Translation from './Translation'
 export default function Information(props) {
     const { output, finished } = props
     const [tab, setTab] = useState('transcription')
-    const [translation, setTranslation] = useState(null)
+    const [translation, setTranslation] = useState([])
     const [toLanguage, setToLanguage] = useState('Select language')
     const [translating, setTranslating] = useState(null)
     console.log(output)
 
     const worker = useRef()
+      
 
     useEffect(() => {
         if (!worker.current) {
@@ -29,11 +30,11 @@ export default function Information(props) {
                     console.log('LOADING')
                     break;
                 case 'update':
-                    setTranslation(e.data.output)
-                    console.log(e.data.output)
+                    console.log("Chunk received:", e.data.output)
                     break;
                 case 'complete':
                     setTranslating(false)
+                    setTranslation(e.data.output)
                     console.log("DONE")
                     break;
             }
@@ -44,7 +45,9 @@ export default function Information(props) {
         return () => worker.current.removeEventListener('message', onMessageReceived)
     })
 
-    const textElement = tab === 'transcription' ? output.map(val => val.text) : translation || ''
+    const textElement = tab === 'transcription' ? output.map(val => val.text) : translation || '' 
+
+
 
     function handleCopy() {
         navigator.clipboard.writeText(textElement)
@@ -72,13 +75,13 @@ export default function Information(props) {
         
     }
     
-
-
-
-
     return (
         <main className='flex-1  p-4 flex flex-col gap-3 text-center sm:gap-4 justify-center pb-20 max-w-prose w-full mx-auto'>
-            <h1 className='font-semibold text-4xl sm:text-5xl md:text-6xl text-purple-300 m-6'>Transcription</h1>
+            {tab === 'transcription' ? (
+                <h1 className='font-semibold text-4xl sm:text-5xl md:text-6xl text-purple-300 m-6'>Transcription</h1>
+                ) : (
+                <h1 className='font-semibold text-4xl sm:text-5xl md:text-6xl text-purple-300 m-6'>Translation</h1>
+            )}
 
             <div className='grid grid-cols-2 sm:mx-auto bg-white  rounded-3xl overflow-hidden items-center p-1 blueShadow border-[2px] border-solid border-purple-500'>
                 <button onClick={() => setTab('transcription')} className={'px-4 rounded duration-200 py-1 ' + (tab === 'transcription' ? ' bg-purple-400 text-white rounded-3xl' : ' text-purple-400 hover:text-purple-500 hover:cursor-pointer')}>Transcription</button>
