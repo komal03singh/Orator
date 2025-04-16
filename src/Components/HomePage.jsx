@@ -69,8 +69,8 @@ function HomePage(props) {
   })
 
   return (
-    <main className="flex-1 p-4 flex flex-row justify-between text-center gap-3 sm:gap-4 md:gap-5 pb-20">
-      <div className='flex-1 flex flex-col justify-center items-center'>
+    <main className="flex-1 flex flex-col sm:flex-row justify-between text-center gap-3 sm:gap-4 md:gap-5 pb-20">
+      <div className='flex-1 flex flex-col justify-center items-center sm:m-20 mt-6'>
         <h1 className='font-semibold text-5xl sm:text-6xl md:text-7xl mb-2'>Orator</h1>
         <h3 className='font-medium md:text-lg mb-4'>Record <span className='text-purple-300'>&rarr;</span> Transcribe <span className='text-purple-300'>&rarr;</span> Translate</h3>
         <button onClick={recordingStatus === 'recording' ? stopRecording : startRecording} className='flex splBtn px-4 py-2 rounded-2xl items-center text-base justify-between gap-4 mx-auto w-80 max-w-full my-4 mb-8'>
@@ -88,8 +88,8 @@ function HomePage(props) {
             setFile(tempFile)}} className='hidden' type='file' accept='.mp3,.wave' /></label> a mp3 file</p>
         <p className='italic text-blue-200'>Fast. Accurate. Effortless.</p>
       </div>
-      <div>
-        <img className='rounded-4xl h-xl w-xl m-4' src={VoiceGif} alt="voice" />
+      <div className='flex justify-center items-center'>
+        <img className='rounded-4xl w-64 sm:w-80 md:w-96 max-w-full h-2xl m-4' src={VoiceGif} alt="voice" />
       </div>
     </main>
   )
