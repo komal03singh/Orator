@@ -17,7 +17,7 @@ export default function Translation(props) {
             {!translating && (<div className='flex flex-col gap-1 mb-4'>
                 <p className='text-xs sm:text-sm font-medium text-blue-200 mr-auto m-2'>To language</p>
                 <div className='flex items-stretch gap-2 sm:gap-4' >
-                    <select value={toLanguage} className='flex-1 outline-none w-full focus:outline-none bg-white text-black duration-200 p-2  rounded-3xl' onChange={(e) => setToLanguage(e.target.value)}>
+                    <select value={toLanguage} className='flex-1 outline-none w-full focus:outline-none text-lg bg-white text-purple-600 duration-200 p-3  rounded-3xl' onChange={(e) => setToLanguage(e.target.value)}>
                         <option value={'Select language'}>Select language</option>
                         {Object.entries(LANGUAGES).map(([key, value]) => {
                             return (
@@ -26,7 +26,7 @@ export default function Translation(props) {
                         })}
 
                     </select>
-                    <button onClick={generateTranslation} className='splBtn px-4 py-2 rounded-2xl text-purple-300 hover:text-purple-400 duration-200 hover:cursor-pointer'>Translate</button>
+                    <button onClick={generateTranslation} className='text-lg splBtn px-4 py-2 rounded-2xl text-purple-300 hover:text-purple-400 duration-200 hover:cursor-pointer'>Translate</button>
                 </div>
             </div>)}
         </>
