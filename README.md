@@ -3,6 +3,7 @@
 
 **Orator** is a transcription app that enables users to **record or upload audio**, **transcribe** and **translate** it effortlessly using powerful AI models. It combines the capabilities of **OpenAI Whisper** for transcription and **Xenova's NLLB-200 Distilled (600M)** model for multilingual translation—without relying on external APIs.
 
+
 <img src="./src/asset/voice2.gif" alt="Orator Banner" width="300"/>
 
 ---
