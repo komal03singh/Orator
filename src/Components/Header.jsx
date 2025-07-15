@@ -2,7 +2,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <header className='flex items-center justify-between gap-4 p-4 mt-3'>
+    <header className='flex items-center justify-between gap-4 p-4 px-8 pt-4 mt-2'>
             <a href="/"><h1 className='font-medium text-white bold text-2xl'>Orator</h1>
             <h6 className='font-medium text-xs text-purple-300'>Convert spoken words into text</h6>
             </a>
