@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useEffect,useRef } from 'react'
-import VoiceGif from '../asset/voice2.gif'
+import Voice from '../asset/voice2.mp4'
 
 function HomePage(props) {
   const {setFile,setAudioStream} = props
@@ -69,8 +69,8 @@ function HomePage(props) {
   })
 
   return (
-    <main className="flex-1 flex flex-col sm:flex-row justify-between text-center gap-3 sm:gap-4 md:gap-5 pb-20">
-      <div className='flex-1 flex flex-col justify-center items-center sm:m-20 mt-6'>
+    <main className="w-full flex-1 flex flex-col sm:flex-row justify-between text-center gap-3 sm:gap-4 md:gap-5 pb-20">
+      <div className='flex-1 flex flex-col justify-center items-center sm:m-20 mt-6 gap-3'>
         <h1 className='font-semibold text-5xl sm:text-6xl md:text-7xl mb-2'>Orator</h1>
         <h3 className='font-medium md:text-lg mb-4'>Record <span className='text-purple-300'>&rarr;</span> Transcribe <span className='text-purple-300'>&rarr;</span> Translate</h3>
         <button onClick={recordingStatus === 'recording' ? stopRecording : startRecording} className='flex splBtn px-4 py-2 rounded-2xl items-center text-base justify-between gap-4 mx-auto w-80 max-w-full my-4 mb-8'>
@@ -82,14 +82,14 @@ function HomePage(props) {
           <i className={"fa-solid duration-200 fa-microphone "+(recordingStatus === 'recording'?'text-rose-300':"")}></i>
           </div>
         </button>
-        <p className='text-base mb-2'>Or <label className='text-purple-300 cursor-pointer hover:text-purple-300 duration-200'>upload 
+        <p className ='text-base mb-2'>Or <label className='text-purple-300 cursor-pointer hover:text-purple-300 duration-200'>upload 
           <input onChange={(e)=>{
             const tempFile=e.target.files[0]
             setFile(tempFile)}} className='hidden' type='file' accept='.mp3,.wave' /></label> a mp3 file</p>
         <p className='italic text-blue-200'>Fast. Accurate. Effortless.</p>
       </div>
-      <div className='flex justify-center items-center'>
-        <img className='rounded-4xl w-64 sm:w-80 md:w-96 max-w-full h-2xl m-4' src={VoiceGif} alt="voice" />
+      <div className='lg:w-1/2 flex justify-center items-center'>
+        <video className='rounded-4xl lg:w-4/5 w-90 md:w-96 max-w-full h-2xl m-4' src={Voice} autoPlay loop muted ></video>
       </div>
     </main>
   )
